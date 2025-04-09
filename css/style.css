@@ -65,8 +65,9 @@ h1 {
   padding: 12px 26px;
   font-size: 16px;
   font-weight: 600;
-  background-color: #1a1a1a;
-  color: white;
+  background-color: transparent;
+  border: 2px solid #fff;
+  color: #fff;
   border-radius: 6px;
   text-decoration: none;
   transition: all 0.3s ease;
