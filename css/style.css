@@ -9,38 +9,70 @@
 body {
   font-family: 'Arial', sans-serif;
   line-height: 1.6;
-  background: #004d2c; /* British Racing Green */
+  background: linear-gradient(45deg, #004d2c, #a3b18c); /* Gradient with British Racing Green */
   color: #fff;
-  padding: 0;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+  animation: backgroundAnimation 10s ease-in-out infinite;
+}
+
+/* Keyframes for a cool background color shift */
+@keyframes backgroundAnimation {
+  0% { background: #004d2c; }
+  50% { background: #006400; }
+  100% { background: #004d2c; }
 }
 
 /* Landing page styling */
 .landing {
   text-align: center;
-  padding: 20px;
+  padding: 40px;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   max-width: 600px;
   margin: 0 auto;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(10px);
+  transform: scale(1.05);
+  opacity: 0;
+  animation: fadeIn 1.5s ease-in-out forwards;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: scale(1.2); }
+  100% { opacity: 1; transform: scale(1); }
 }
 
 /* Heading styling */
-.landing h1 {
-  font-size: 3.5rem;
+.welcome-text {
+  font-size: 4rem;
   font-weight: bold;
   margin-bottom: 20px;
   color: #fff;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
+  animation: slideIn 2s ease-out;
 }
 
 /* Intro text styling */
-.landing .intro-text {
-  font-size: 1.5rem;
+.intro-text {
+  font-size: 1.8rem;
   margin-top: 20px;
   font-style: italic;
   color: #fff;
+  animation: fadeInText 2s ease-in-out;
+}
+
+/* Slide-in effect for heading */
+@keyframes slideIn {
+  0% { transform: translateY(-50px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Animation for intro text */
+@keyframes fadeInText {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
