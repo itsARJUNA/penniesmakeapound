@@ -1,78 +1,116 @@
-/* Reset some default styles */
-* {
+/* Global styles */
+body {
+  font-family: 'Playfair', serif;  /* Playfair Display font */
+  background-color: #004B23; /* British Racing Green background */
+  color: white; /* White text for contrast */
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* General body styles */
-body {
-  font-family: 'Arial', sans-serif;
-  line-height: 1.6;
-  background: linear-gradient(45deg, #004d2c, #a3b18c); /* Gradient with British Racing Green */
-  color: #fff;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  animation: backgroundAnimation 10s ease-in-out infinite;
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair', serif;
+  color: white; /* Ensure all headings are white */
 }
 
-/* Keyframes for a cool background color shift */
-@keyframes backgroundAnimation {
-  0% { background: #004d2c; }
-  50% { background: #006400; }
-  100% { background: #004d2c; }
+p {
+  color: white;
 }
 
-/* Landing page styling */
-.landing {
-  text-align: center;
+a {
+  color: #fff; /* Links are white */
+  text-decoration: none;
+}
+
+section {
   padding: 40px;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  max-width: 600px;
-  margin: 0 auto;
-  backdrop-filter: blur(10px);
-  transform: scale(1.05);
-  opacity: 0;
-  animation: fadeIn 1.5s ease-in-out forwards;
+  margin: 20px;
 }
 
-/* Fade-in animation */
-@keyframes fadeIn {
-  0% { opacity: 0; transform: scale(1.2); }
-  100% { opacity: 1; transform: scale(1); }
+/* Landing page section */
+#landing {
+  text-align: center;
+  padding: 100px 20px;
+  background-color: rgba(255, 255, 255, 0.1);  /* Slight transparency */
+  border-radius: 8px;
 }
 
-/* Heading styling */
-.welcome-text {
-  font-size: 4rem;
-  font-weight: bold;
+#landing h1 {
+  font-size: 3em;
   margin-bottom: 20px;
+}
+
+#landing p {
+  font-size: 1.2em;
+}
+
+/* Journey section */
+.journey {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.timeline {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.timeline li {
+  margin-bottom: 20px;
+}
+
+.timeline .year {
+  font-weight: bold;
+  font-size: 1.2em;
   color: #fff;
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
-  animation: slideIn 2s ease-out;
 }
 
-/* Intro text styling */
-.intro-text {
-  font-size: 1.8rem;
-  margin-top: 20px;
-  font-style: italic;
-  color: #fff;
-  animation: fadeInText 2s ease-in-out;
+.timeline h3 {
+  font-size: 1.5em;
+  color: white;
 }
 
-/* Slide-in effect for heading */
-@keyframes slideIn {
-  0% { transform: translateY(-50px); opacity: 0; }
-  100% { transform: translateY(0); opacity: 1; }
+.timeline p {
+  font-size: 1.1em;
 }
 
-/* Animation for intro text */
-@keyframes fadeInText {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+/* Dream section */
+#dream {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#dream h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+#dream p {
+  font-size: 1.1em;
+}
+
+/* Contact section */
+#contact {
+  text-align: center;
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+#contact h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+#contact p {
+  font-size: 1.1em;
+}
+
+a {
+  font-weight: bold;
+  text-decoration: underline;
 }
