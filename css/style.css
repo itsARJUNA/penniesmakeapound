@@ -1,116 +1,99 @@
-/* Global styles */
+/* General reset and typography */
 body {
-  font-family: 'Playfair', serif;  /* Playfair Display font */
-  background-color: #004B23; /* British Racing Green background */
-  color: white; /* White text for contrast */
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-
-h1, h2, h3, h4, h5, h6 {
   font-family: 'Playfair', serif;
-  color: white; /* Ensure all headings are white */
-}
-
-p {
-  color: white;
-}
-
-a {
-  color: #fff; /* Links are white */
-  text-decoration: none;
+  background-color: #004B23; /* British Racing Green */
+  color: #fff;
+  line-height: 1.6;
+  transition: background-color 0.3s ease;
 }
 
 section {
+  max-width: 900px;
+  margin: 50px auto;
   padding: 40px;
-  margin: 20px;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(8px);
 }
 
-/* Landing page section */
-#landing {
+/* Headings */
+h1 {
+  font-size: 3.2em;
   text-align: center;
-  padding: 100px 20px;
-  background-color: rgba(255, 255, 255, 0.1);  /* Slight transparency */
-  border-radius: 8px;
-}
-
-#landing h1 {
-  font-size: 3em;
   margin-bottom: 20px;
+  animation: pop 1s ease-in-out;
 }
 
-#landing p {
-  font-size: 1.2em;
-}
-
-/* Journey section */
-.journey {
-  background-color: rgba(255, 255, 255, 0.1);
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.timeline {
-  list-style-type: none;
-  padding-left: 0;
-}
-
-.timeline li {
+h2 {
+  font-size: 2em;
   margin-bottom: 20px;
+  border-bottom: 2px solid rgba(255,255,255,0.2);
+  padding-bottom: 10px;
 }
 
-.timeline .year {
-  font-weight: bold;
-  font-size: 1.2em;
+h3 {
+  margin: 10px 0 5px;
+  font-size: 1.4em;
+}
+
+/* Paragraphs */
+p {
+  font-size: 1.1em;
+  margin-bottom: 15px;
+}
+
+/* Links */
+a {
+  color: #f7eacb;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+a:hover {
   color: #fff;
 }
 
-.timeline h3 {
-  font-size: 1.5em;
-  color: white;
+/* Timeline styling */
+.timeline {
+  list-style: none;
+  padding: 0;
 }
-
-.timeline p {
-  font-size: 1.1em;
+.timeline li {
+  margin-bottom: 30px;
 }
-
-/* Dream section */
-#dream {
-  background-color: rgba(255, 255, 255, 0.1);
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-#dream h2 {
-  font-size: 2em;
-  margin-bottom: 20px;
-}
-
-#dream p {
-  font-size: 1.1em;
-}
-
-/* Contact section */
-#contact {
-  text-align: center;
-  padding: 30px;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-}
-
-#contact h2 {
-  font-size: 2em;
-  margin-bottom: 20px;
-}
-
-#contact p {
-  font-size: 1.1em;
-}
-
-a {
+.timeline .year {
   font-weight: bold;
-  text-decoration: underline;
+  color: #c1f1c5;
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Fade-in animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 1s forwards ease-in-out;
+}
+.fade-in.delay-1 { animation-delay: 0.3s; }
+.fade-in.delay-2 { animation-delay: 0.6s; }
+.fade-in.delay-3 { animation-delay: 0.9s; }
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
