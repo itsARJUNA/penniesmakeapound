@@ -1,46 +1,384 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Arjuna | Portfolio</title>
+  <title>Arjuna | Systems Engineer</title>
   <link rel="stylesheet" href="./css/style.css" />
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@400;600&family=Playfair:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 </head>
 <body>
 
-  <!-- Navigation Bar -->
+  <!-- Navigation -->
   <nav class="navbar">
     <div class="nav-container">
-      <a href="index.html" class="logo">Arjuna</a>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
+      <a href="#pennies" class="logo">Pennies Make a Pound</a>
+      <div class="nav-right">
+        <ul class="nav-links">
+          <li><a href="#experience">experience</a></li>
+          <li><a href="#skills">skills</a></li>
+          <li><a href="#projects">projects</a></li>
+          <li><a href="#contact">contact</a></li>
+        </ul>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <header class="hero">
-    <div class="overlay">
-      <h1>Welcome to Arjuna</h1>
-      <p class="subtext">Welcome to my website, updates coming shortly.</p>
-      <div class="buttons">
-        <a href="https://github.com/itsARJUNA" class="btn clean outline" target="_blank">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" class="icon">
-          See My Work
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#experience">experience</a></li>
+      <li><a href="#skills">skills</a></li>
+      <li><a href="#projects">projects</a></li>
+      <li><a href="#contact">contact</a></li>
+    </ul>
+  </div>
+
+  <main class="container">
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <h1>Bonjour, I'm <span class="accent">Arjuna</span></h1>
+      <div class="hero-badge">Systems Engineer · AWS</div>
+      <p class="hero-bio">
+        I'm a Master of None, but a relentless problem solver. Technical or non-technical,
+        if there's a problem, I've already got six tabs open looking for answers. I love finding the right tools, connecting the dots, and building solutions that actually work. Give me a challenge
+        and a cup of coffee, and I'll figure the rest out.
+      </p>
+      <div class="hero-links">
+        <a href="https://github.com/itsARJUNA" target="_blank" rel="noopener" class="hero-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          GitHub
         </a>
-        <a href="https://www.linkedin.com/in/arjuna-kumar-a8126a1b3/" class="btn clean outline" target="_blank">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" class="icon">
-          Contact Me
+        <a href="https://www.linkedin.com/in/thearjuna/" target="_blank" rel="noopener" class="hero-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <a href="mailto:arjunak@outlook.com" class="hero-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Email
         </a>
       </div>
-    </div>
-  </header>
+    </section>
+
+    <!-- Divider -->
+    <hr class="section-divider" />
+
+    <!-- Experience Section -->
+    <section class="section" id="experience">
+      <h2 class="section-title">Experience</h2>
+
+      <details class="exp-group">
+        <summary class="exp-group-header">
+          <img src="./images/aws-logo.png" alt="AWS" class="exp-logo" />
+          <div>
+            <h3 class="exp-company">Amazon Web Services</h3>
+            <p class="exp-role">Systems Engineer</p>
+          </div>
+          <div class="exp-date-group">
+            <span class="exp-date">May 2024 · Present</span>
+            <span class="chevron">▼</span>
+          </div>
+        </summary>
+        <div class="exp-group-content">
+          <div class="experience-item">
+            <div class="exp-header">
+              <p class="exp-role">Systems Engineer</p>
+              <span class="exp-date">May 2025 · Present</span>
+            </div>
+            <div class="exp-details">
+              <p class="exp-team">Argus</p>
+              <ul>
+                <li>Building out existing AWS services into a new region. "It works in us-east-1" is not a valid excuse.</li>
+                <li>Working closely with Security services, leveraging a cybersecurity background that refuses to collect dust.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="experience-item">
+            <div class="exp-header">
+              <p class="exp-role">Systems Analyst</p>
+              <span class="exp-date">May 2024 · May 2025</span>
+            </div>
+            <div class="exp-details">
+              <p class="exp-team">AI2 Engineer · May to Sep 2024</p>
+              <ul>
+                <li>Spent the first few months "skilling up on AWS", which is corporate speak for drinking from a firehose while pretending you're not drowning. Spoiler: I swam.</li>
+              </ul>
+              <p class="exp-team">S3 Team, Virginia · Sep 2024 to Apr 2025</p>
+              <ul>
+                <li>First 3.5 months as an operational engineer, burning down tickets, keeping storage alive across multiple AZs and regions. The kind of work where "it's fine" means you did your job perfectly and nobody noticed.</li>
+                <li>Held on-call during UK hours, giving my US counterparts the rare gift of uninterrupted sleep. You're welcome, America.</li>
+                <li>Next 3.5 months shifted to automation. Sharpened Python skills to build tooling that helped engineers work smarter, not harder. Also built Grafana dashboards, because if it's not on a dashboard, did it even happen?</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details class="exp-group">
+        <summary class="exp-group-header">
+          <img src="./images/fujitsu-logo.png" alt="Fujitsu" class="exp-logo" />
+          <div>
+            <h3 class="exp-company">Fujitsu</h3>
+            <p class="exp-role">SIEM Engineer</p>
+          </div>
+          <div class="exp-date-group">
+            <span class="exp-date">Nov 2021 · Dec 2023</span>
+            <span class="chevron">▼</span>
+          </div>
+        </summary>
+        <div class="exp-group-content">
+          <div class="experience-item">
+            <div class="exp-header">
+              <p class="exp-role">SIEM Engineer</p>
+              <span class="exp-date">Jun 2022 · Dec 2023</span>
+            </div>
+            <div class="exp-details">
+              <ul>
+                <li>Went an inch wide and a mile deep into SIEM, specifically LogRhythm. Started as a junior engineer learning from SOC Gods, ended up as the SME that people came to when things needed figuring out.</li>
+                <li>Got promoted from "the new guy" to SIEM integrator on a major project. Turns out, Arjuna isn't just a pretty face.</li>
+                <li>Transitioned to contractor, worked alongside other SME geniuses, and discovered just how much tax you pay when you're good at your job. Loved every second of it (except the tax part).</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="experience-item">
+            <div class="exp-header">
+              <p class="exp-role">Security Solutions Architect</p>
+              <span class="exp-date">Nov 2021 · Jun 2022</span>
+            </div>
+            <div class="exp-details">
+              <ul>
+                <li>First job out of university. Trained a mile wide but an inch deep across general cybersecurity. Enough to know what I didn't know, and hungry enough to fix that.</li>
+                <li>Found my niche and never looked back.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <!-- Divider -->
+    <hr class="section-divider" />
+
+    <!-- Skills Section -->
+    <section class="section" id="skills">
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3>Cloud & Infrastructure</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">AWS</span>
+            <span class="skill-tag">S3</span>
+            <span class="skill-tag">EC2</span>
+            <span class="skill-tag">IAM</span>
+            <span class="skill-tag">CloudWatch</span>
+            <span class="skill-tag">Lambda</span>
+            <span class="skill-tag">VPC</span>
+            <span class="skill-tag">Route 53</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3>Security</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">LogRhythm</span>
+            <span class="skill-tag">SIEM</span>
+            <span class="skill-tag">SOC Operations</span>
+            <span class="skill-tag">Threat Detection</span>
+            <span class="skill-tag">Incident Response</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3>Development & Tooling</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Grafana</span>
+            <span class="skill-tag">Automation</span>
+            <span class="skill-tag">HTML / CSS</span>
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">Bash</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3>The Soft Stuff</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Problem Solving</span>
+            <span class="skill-tag">Grit & Tenacity</span>
+            <span class="skill-tag">Time Management</span>
+            <span class="skill-tag">On-Call Operations</span>
+            <span class="skill-tag">Cross-Team Collaboration</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <hr class="section-divider" />
+
+    <!-- Projects Section -->
+    <section class="section" id="projects">
+      <h2 class="section-title">Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card coming-soon-card">
+          <div class="project-emoji">🔨</div>
+          <h3>Something's Cooking</h3>
+          <p>Projects are in the oven. Check back soon, or keep an eye on my GitHub.</p>
+          <a href="https://github.com/itsARJUNA" target="_blank" rel="noopener" class="project-link">
+            View GitHub →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <hr class="section-divider" />
+
+    <!-- Education Section -->
+    <section class="section" id="education">
+      <h2 class="section-title">Education</h2>
+
+      <details class="exp-group">
+        <summary class="exp-group-header">
+          <img src="./images/brunel-logo.jpg" alt="Brunel University" class="exp-logo" />
+          <div>
+            <h3 class="exp-company">Brunel University of London</h3>
+            <p class="exp-role">BSc Computer Science and Artificial Intelligence</p>
+          </div>
+          <div class="exp-date-group">
+            <span class="exp-date">Sep 2017 · Jul 2021</span>
+            <span class="chevron">▼</span>
+          </div>
+        </summary>
+        <div class="exp-group-content">
+          <div class="exp-details">
+            <ul>
+              <li>Four years that changed everything. Finally studying something I genuinely enjoyed, and the results showed.</li>
+              <li>Dissertation focused on Computational Linguistics, comparing languages and deducing ancestral roots through pairwise comparison of phonemes. Built the entire program in Java.</li>
+              <li>Played a key role in the Tennis Society, holding positions as Chairman, Treasurer, and Secretary across multiple years.</li>
+              <li>Made lifelong friends, found the love of my life, and had the best four years I could have asked for.</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <!-- Divider -->
+    <hr class="section-divider" />
+
+    <!-- Pennies Make A Pound Section -->
+    <section class="section" id="pennies">
+      <h2 class="section-title">Why Pennies Make a Pound?</h2>
+      <div class="pennies-content">
+        <p>
+          There's an old British proverb: "look after the pennies and the pounds will look after themselves."
+          It's the idea that greatness isn't built in a single moment. It's built in the small, boring, consistent
+          steps that nobody sees. That's how I approach everything. Learn one thing today, solve one problem
+          tomorrow, and before you know it, the pennies have made a pound.
+        </p>
+        <p>
+          I'm also extremely lucky. I don't just mean right-place-right-time lucky. I mean the kind of luck
+          that makes you stop and think "how did that just happen?" I attract it. I can't explain it, but I've
+          learned to trust it.
+        </p>
+        <p class="pennies-quote">Everything I want, wants me more.</p>
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <hr class="section-divider" />
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+      <h2 class="section-title">Get In Touch</h2>
+      <p class="contact-text">
+        Got a problem that needs solving? Want to collaborate on something? Or just want to say hey?
+        I'm always up for a good conversation.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:arjunak@outlook.com" class="contact-card">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <span>arjunak@outlook.com</span>
+        </a>
+        <a href="https://github.com/itsARJUNA" target="_blank" rel="noopener" class="contact-card">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          <span>itsARJUNA</span>
+        </a>
+        <a href="https://www.linkedin.com/in/thearjuna/" target="_blank" rel="noopener" class="contact-card">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          <span>thearjuna</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>Built with grit, coffee, and a refusal to use a template. © 2025 Arjuna.</p>
+  </footer>
+
+  <!-- Theme Toggle Script -->
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+    const stored = localStorage.getItem('theme');
+
+    if (stored) {
+      html.setAttribute('data-theme', stored);
+    } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+      html.setAttribute('data-theme', 'light');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      const current = html.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+
+    // Mobile menu
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenuBtn.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenuBtn.classList.remove('active');
+        mobileMenu.classList.remove('active');
+      });
+    });
+
+    // Smooth scroll offset for fixed nav
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          const offset = 100;
+          const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>
