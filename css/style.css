@@ -16,7 +16,7 @@
   --text-muted: #666666;
   --border: #222222;
   --card-bg: #141414;
-  --card-hover: #1a1a1a;
+  --card-hover: #0f2a1f;
   --tag-bg: #1a1a1a;
   --tag-border: #2a2a2a;
   --accent: #0B3D2E;
@@ -221,7 +221,7 @@ body {
 
 /* ====== HERO ====== */
 .hero {
-  padding: 4rem 0 3rem;
+  padding: 1.5rem 0 1rem;
 }
 
 .hero-badge {
@@ -277,13 +277,15 @@ body {
   padding: 0.5rem 1rem;
   border: 1px solid var(--border);
   border-radius: 8px;
-  transition: all var(--transition);
+  transition: all var(--transition), transform var(--transition), box-shadow var(--transition);
 }
 
 .hero-link:hover {
   color: var(--text);
   border-color: var(--text-muted);
   background: var(--card-hover);
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .hero-link svg {
@@ -300,7 +302,7 @@ body {
 
 /* ====== SECTIONS ====== */
 .section {
-  padding: 3rem 0;
+  padding: 1rem 0;
 }
 
 .section-title {
@@ -328,7 +330,7 @@ body {
   border-radius: 8px;
   margin-left: -0.75rem;
   margin-right: -0.75rem;
-  transition: background var(--transition);
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
 }
 
 .exp-group-header > div:first-of-type {
@@ -337,6 +339,16 @@ body {
 
 .exp-group-header:hover {
   background: var(--card-hover);
+  transform: scale(1.015);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.exp-group-header:hover .chevron {
+  transform: translateY(3px);
+}
+
+.exp-group[open] .exp-group-header:hover .chevron {
+  transform: rotate(180deg) translateY(-3px);
 }
 
 .exp-logo {
@@ -630,8 +642,9 @@ body {
 
 .contact-links {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 0.75rem;
+  flex-wrap: wrap;
 }
 
 .contact-card {
@@ -644,7 +657,7 @@ body {
   padding: 0.75rem 1rem;
   border: 1px solid var(--border);
   border-radius: 10px;
-  transition: all var(--transition);
+  transition: all var(--transition), transform var(--transition), box-shadow var(--transition);
   width: fit-content;
 }
 
@@ -652,6 +665,8 @@ body {
   color: var(--text);
   border-color: var(--text-muted);
   background: var(--card-hover);
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .contact-card svg {
