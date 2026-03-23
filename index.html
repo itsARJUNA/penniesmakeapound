@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Arjuna | Systems Engineer</title>
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
   <link rel="stylesheet" href="./css/style.css" />
 
   <!-- Fonts -->
@@ -16,7 +17,7 @@
   <!-- Navigation -->
   <nav class="navbar">
     <div class="nav-container">
-      <a href="#pennies" class="logo">Pennies Make a Pound</a>
+      <a href="#pennies" class="logo"><img src="./favicon.svg" alt="Coin" class="logo-icon" />Pennies Make a Pound</a>
       <div class="nav-right">
         <ul class="nav-links">
           <li><a href="#experience">experience</a></li>
@@ -313,7 +314,7 @@
 
   <!-- Footer -->
   <footer class="footer">
-    <p>Built with grit, coffee, and a refusal to use a template. © 2025 Arjuna.</p>
+    <p>Built with prompt engineering.</p>
   </footer>
 
   <!-- Theme Toggle Script -->
@@ -333,6 +334,50 @@
       const next = current === 'dark' ? 'light' : 'dark';
       html.setAttribute('data-theme', next);
       localStorage.setItem('theme', next);
+      themeToggle.classList.remove('spin');
+      void themeToggle.offsetWidth;
+      themeToggle.classList.add('spin');
+    });
+
+    // Coin tilt following mouse
+    const logoLink = document.querySelector('.logo');
+    logoLink.addEventListener('mousemove', (e) => {
+      const coin = document.querySelector('.logo-icon');
+      const rect = coin.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      const rotateY = (x / rect.width) * 80;
+      const rotateX = -(y / rect.height) * 80;
+      coin.style.transform = `perspective(200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+
+    logoLink.addEventListener('mouseleave', () => {
+      const coin = document.querySelector('.logo-icon');
+      coin.style.transform = 'perspective(200px) rotateX(0) rotateY(0)';
+    });
+
+    // Coin flip on click
+    const coin = document.querySelector('.logo-icon');
+    coin.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      coin.classList.remove('flip');
+      void coin.offsetWidth;
+      coin.classList.add('flip');
+    });
+
+    // Re-trigger stagger animations on details toggle
+    document.querySelectorAll('.exp-group').forEach(details => {
+      details.addEventListener('toggle', () => {
+        if (details.open) {
+          const items = details.querySelectorAll('.experience-item, .exp-details, li');
+          items.forEach(el => {
+            el.style.animation = 'none';
+            void el.offsetWidth;
+            el.style.animation = '';
+          });
+        }
+      });
     });
 
     // Mobile menu
