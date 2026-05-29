@@ -60,6 +60,12 @@ body {
   line-height: 1.7;
   transition: background-color var(--transition), color var(--transition);
   -webkit-font-smoothing: antialiased;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+body.loaded {
+  opacity: 1;
 }
 
 /* ====== NAVBAR ====== */
@@ -70,7 +76,13 @@ body {
   background-color: var(--bg);
   border-bottom: 1px solid var(--border);
   z-index: 1000;
-  transition: background-color var(--transition), border-color var(--transition);
+  transition: background-color var(--transition), border-color var(--transition), backdrop-filter 0.3s ease;
+}
+
+.navbar.scrolled {
+  background-color: color-mix(in srgb, var(--bg) 80%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .nav-container {
@@ -171,8 +183,13 @@ body {
   color: var(--text);
 }
 
-.nav-links a:hover::after {
+.nav-links a:hover::after,
+.nav-links a.active::after {
   width: 100%;
+}
+
+.nav-links a.active {
+  color: var(--text);
 }
 
 /* Theme Toggle */
@@ -289,6 +306,24 @@ body {
   padding: 1.5rem 0 1rem;
 }
 
+.hero > * {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero > *:nth-child(1) { animation-delay: 0.1s; }
+.hero > *:nth-child(2) { animation-delay: 0.2s; }
+.hero > *:nth-child(3) { animation-delay: 0.35s; }
+.hero > *:nth-child(4) { animation-delay: 0.5s; }
+
+@keyframes heroFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .hero-badge {
   display: inline-block;
   font-size: 0.8rem;
@@ -327,7 +362,7 @@ body {
 
 .hero-links {
   display: flex;
-  gap: 1rem;
+  gap: 0.6rem;
   flex-wrap: wrap;
 }
 
@@ -339,7 +374,7 @@ body {
   font-weight: 500;
   color: var(--text-secondary);
   text-decoration: none;
-  padding: 0.5rem 1rem;
+  padding: 0.4rem 0.75rem;
   border: 1px solid var(--border);
   border-radius: 8px;
   transition: all var(--transition), transform var(--transition), box-shadow var(--transition);
@@ -360,9 +395,15 @@ body {
 /* ====== SECTION DIVIDERS ====== */
 .section-divider {
   border: none;
-  border-top: 1px solid var(--border);
+  height: 1px;
+  background: var(--border);
   margin: 0;
-  transition: border-color var(--transition);
+  transform: scaleX(0);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), background var(--transition);
+}
+
+.section-divider.revealed {
+  transform: scaleX(1);
 }
 
 /* ====== SECTIONS ====== */
@@ -404,8 +445,8 @@ body {
 
 .exp-group-header:hover {
   background: var(--card-hover);
-  transform: scale(1.015);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: scale(1.015) translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
 .exp-group-header:hover .chevron {
@@ -602,6 +643,13 @@ body {
   padding: 0.3rem 0.7rem;
   border-radius: 6px;
   transition: all var(--transition), transform var(--transition), box-shadow var(--transition);
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.skill-tag.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .skill-tag:hover {
@@ -624,12 +672,14 @@ body {
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 2rem;
-  transition: all var(--transition);
+  transition: all 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  transform-style: preserve-3d;
 }
 
 .project-card:hover {
   border-color: var(--text-muted);
   background: var(--card-hover);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
 .coming-soon-card {
@@ -748,6 +798,14 @@ body {
   font-style: italic;
   color: var(--accent-text);
   margin-top: 1.5rem;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.pennies-content p.pennies-quote.revealed {
+  opacity: 1;
+  transform: scale(1);
 }
 
 /* ====== CONTACT ====== */
@@ -778,6 +836,13 @@ body {
   border-radius: 10px;
   transition: all var(--transition), transform var(--transition), box-shadow var(--transition);
   width: fit-content;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.contact-card.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .contact-card:hover {
@@ -800,6 +865,77 @@ body {
   padding: 2rem 1.5rem 3rem;
   text-align: center;
   border-top: 1px solid var(--border);
+}
+
+.footer p {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.footer p.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ====== EASTER EGG ====== */
+.confetti {
+  position: fixed;
+  top: -10px;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  z-index: 10000;
+  pointer-events: none;
+  animation: confettiFall linear forwards;
+}
+
+@keyframes confettiFall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+.easter-egg-msg {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  background: var(--card-bg);
+  border: 2px solid var(--accent-text);
+  border-radius: 16px;
+  padding: 2rem 3rem;
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-style: italic;
+  color: var(--accent-text);
+  text-align: center;
+  z-index: 10001;
+  opacity: 0;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.easter-egg-msg.visible {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* ====== SCROLL PROGRESS BAR ====== */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: var(--accent-text);
+  width: 0%;
+  z-index: 1001;
+  transition: width 0.05s linear;
 }
 
 .footer p {
@@ -854,4 +990,56 @@ body {
   .hero-link {
     width: fit-content;
   }
+}
+
+/* ====== SCROLL REVEAL ====== */
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-divider.reveal {
+  opacity: 1;
+  transform: scaleX(0);
+}
+
+.section-divider.reveal.revealed {
+  transform: scaleX(1);
+}
+
+/* ====== CURSOR GLOW ====== */
+.project-card,
+.contact-card,
+.exp-group-header {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card::after,
+.contact-card::after,
+.exp-group-header::after {
+  content: '';
+  position: absolute;
+  top: var(--glow-y, 50%);
+  left: var(--glow-x, 50%);
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, var(--accent-text) 0%, transparent 70%);
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  mix-blend-mode: soft-light;
+}
+
+.project-card:hover::after,
+.contact-card:hover::after,
+.exp-group-header:hover::after {
+  opacity: 0.15;
 }

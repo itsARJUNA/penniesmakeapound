@@ -14,6 +14,9 @@
 </head>
 <body>
 
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
   <!-- Navigation -->
   <nav class="navbar">
     <div class="nav-container">
@@ -55,10 +58,22 @@
       <h1>Bonjour, I'm <span class="accent">Arjuna</span></h1>
       <div class="hero-badge">Systems Engineer · AWS</div>
       <p class="hero-bio">
-        I'm a Master of None, but a relentless problem solver. Technical or non-technical,
-        if there's a problem, I've already got six tabs open looking for answers. I love finding the right tools, connecting the dots, and building solutions that actually work. Give me a challenge
-        and a cup of coffee, and I'll figure the rest out.
+        I've been an engineer for four years and I've already done the job three different ways: security, infrastructure, automation. I moved countries twice before I was old enough to have a say in it, which probably explains why I treat every new system like something I'll figure out by Thursday. Technical or non-technical, if there's a problem, I've already got six tabs open looking for answers. Currently keeping services in different AWS regions online, building dashboards nobody asked for, and training an AI to do my least favourite tasks so I can focus on the interesting ones. I have a homelab that exists purely so I can break things without getting paged for it. Give me a challenge and a cup of coffee, and I'll figure the rest out. I also don't like unhygienic people.
       </p>
+      <div class="hero-links">
+        <a href="https://github.com/itsARJUNA" target="_blank" rel="noopener" class="hero-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+          GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/thearjuna/" target="_blank" rel="noopener" class="hero-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          LinkedIn
+        </a>
+        <a href="mailto:arjunak@outlook.com?subject=May%20I%20request%20your%20CV&body=Hi%20Arjuna%2C%0A%0AFirstly%2C%20you're%20a%20beautiful%20man.%0A%0ASecondly%2C%0A%0AThis%20is%20%5Byour%20name%5D%20from%20%5Bcompany%5D%20requesting%20your%20CV.%0A%0AKind%20regards%2C%0A%5Byour%20name%5D" class="hero-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+          Request CV
+        </a>
+      </div>
     </section>
 
     <!-- Divider -->
@@ -101,7 +116,7 @@
               <span class="exp-date">May 2024 · May 2025</span>
             </div>
             <div class="exp-details">
-              <p class="exp-team">AI2 Engineer · May to Sep 2024</p>
+              <p class="exp-team">AI2 Engineer · May 2024 to Sep 2024</p>
               <ul>
                 <li>Spent the first few months "skilling up on AWS", which is corporate speak for drinking from a firehose while pretending you're not drowning. Spoiler: I swam.</li>
               </ul>
@@ -224,8 +239,8 @@
       <div class="projects-grid">
         <div class="project-card coming-soon-card">
           <div class="project-emoji">🔨</div>
-          <h3>Something's Cooking</h3>
-          <p>Projects are in the oven. Check back soon, or keep an eye on my GitHub.</p>
+          <h3>Coming Soon</h3>
+          <p>I'm currently building out this section with projects worth showcasing. In the meantime, you can explore my work on GitHub.</p>
           <a href="https://github.com/itsARJUNA" target="_blank" rel="noopener" class="project-link">
             View GitHub →
           </a>
@@ -319,6 +334,8 @@
 
   <!-- Theme Toggle Script -->
   <script>
+    window.addEventListener('load', () => document.body.classList.add('loaded'));
+
     const themeToggle = document.getElementById('themeToggle');
     const html = document.documentElement;
     const stored = localStorage.getItem('theme');
@@ -407,6 +424,196 @@
           window.scrollTo({ top, behavior: 'smooth' });
         }
       });
+    });
+
+    // Navbar scroll effect
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Active nav highlighting
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+          });
+        }
+      });
+    }, { threshold: 0.3, rootMargin: '-100px 0px -50% 0px' });
+
+    sections.forEach(section => navObserver.observe(section));
+
+    // Pennies quote reveal
+    const penniesQuote = document.querySelector('.pennies-quote');
+    if (penniesQuote) {
+      const quoteObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            quoteObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      quoteObserver.observe(penniesQuote);
+    }
+
+    // Contact cards stagger
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      const contactObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const cards = entry.target.querySelectorAll('.contact-card');
+            cards.forEach((card, i) => {
+              setTimeout(() => card.classList.add('visible'), i * 150);
+            });
+            contactObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+      contactObserver.observe(contactSection);
+    }
+
+    // Konami code easter egg
+    const konamiCode = ['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'];
+    let konamiIndex = 0;
+
+    document.addEventListener('keydown', (e) => {
+      if (e.code === konamiCode[konamiIndex]) {
+        konamiIndex++;
+        if (konamiIndex === konamiCode.length) {
+          konamiIndex = 0;
+          triggerEasterEgg();
+        }
+      } else {
+        konamiIndex = 0;
+      }
+    });
+
+    function triggerEasterEgg() {
+      // Confetti
+      for (let i = 0; i < 150; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.background = ['#f44336','#e91e63','#9c27b0','#673ab7','#3f51b5','#2196f3','#00bcd4','#4caf50','#ffeb3b','#ff9800'][Math.floor(Math.random() * 10)];
+        confetti.style.animationDuration = (Math.random() * 2 + 1.5) + 's';
+        confetti.style.animationDelay = (Math.random() * 0.5) + 's';
+        document.body.appendChild(confetti);
+        confetti.addEventListener('animationend', () => confetti.remove());
+      }
+
+      // Message
+      const msg = document.createElement('div');
+      msg.className = 'easter-egg-msg';
+      msg.textContent = "Fine, you won the prize, me. I shall work for you.";
+      document.body.appendChild(msg);
+      setTimeout(() => msg.classList.add('visible'), 50);
+      setTimeout(() => {
+        msg.classList.remove('visible');
+        setTimeout(() => msg.remove(), 500);
+      }, 4000);
+    }
+
+    // Magnetic buttons
+    document.querySelectorAll('.hero-link, .contact-card, .nav-links a, .theme-toggle').forEach(btn => {
+      btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        btn.style.transform = `translate(${x * 0.07}px, ${y * 0.07}px)`;
+      });
+
+      btn.addEventListener('mouseleave', () => {
+        btn.style.transform = '';
+      });
+    });
+
+    // Cursor glow + tilt on cards
+    document.querySelectorAll('.project-card, .contact-card, .exp-group-header').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--glow-x', x + 'px');
+        card.style.setProperty('--glow-y', y + 'px');
+
+        if (card.classList.contains('project-card')) {
+          const rotateY = ((x / rect.width) - 0.5) * 8;
+          const rotateX = ((y / rect.height) - 0.5) * -8;
+          card.style.transform = `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+        }
+      });
+
+      card.addEventListener('mouseleave', () => {
+        if (card.classList.contains('project-card')) {
+          card.style.transform = '';
+        }
+      });
+    });
+
+    // Scroll progress bar
+    const scrollProgress = document.getElementById('scrollProgress');
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (scrollTop / docHeight) * 100;
+      scrollProgress.style.width = progress + '%';
+    });
+
+    // Footer reveal
+    const footerText = document.querySelector('.footer p');
+    if (footerText) {
+      const footerObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            footerObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      footerObserver.observe(footerText);
+    }
+
+    // Staggered skill tags
+    const skillsSection = document.getElementById('skills');
+    const skillTagObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const tags = entry.target.querySelectorAll('.skill-tag');
+          tags.forEach((tag, i) => {
+            setTimeout(() => tag.classList.add('visible'), i * 60);
+          });
+          skillTagObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    if (skillsSection) skillTagObserver.observe(skillsSection);
+
+    // Scroll reveal
+    const revealElements = document.querySelectorAll('.section, .section-divider');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.05, rootMargin: '0px 0px -50px 0px' });
+
+    revealElements.forEach(el => {
+      el.classList.add('reveal');
+      revealObserver.observe(el);
     });
   </script>
 
